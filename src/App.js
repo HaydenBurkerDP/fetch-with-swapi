@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  NavLink,
+  Route,
+  BrowserRouter as Router,
+  Switch,
+} from "react-router-dom/cjs/react-router-dom";
+import "./app.scss";
+
+import Home from "./components/Home";
+import People from "./components/People";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Router>
+        <div className="navbar-container">
+          <NavLink className="navlink" to="/people">
+            Fetch with SWAPI
+          </NavLink>
+        </div>
+        <Switch>
+          <Route path="/people" component={People}></Route>
+          <Route path="/" component={Home}></Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
